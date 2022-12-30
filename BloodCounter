@@ -1,0 +1,46 @@
+local ca=Instance.new("ScreenGui")
+local da=Instance.new("Frame")local _b=Instance.new("TextLabel")
+local ab=Instance.new("UICorner")local bb=Instance.new("TextLabel")ca.Name="BloodCashCounter"
+ca.Parent=game.CoreGui;ca.ZIndexBehavior=Enum.ZIndexBehavior.Sibling
+da.Name="CounterFrame"da.Parent=ca;da.BackgroundColor3=Color3.fromRGB(0,0,0)
+da.BorderSizePixel=0;da.Position=UDim2.new(0.0869033039,0,0.265625,0)
+da.Size=UDim2.new(0,235,0,60)_b.Name="Cash"_b.Parent=da
+_b.BackgroundColor3=Color3.fromRGB(255,255,255)_b.BackgroundTransparency=1.000;_b.BorderSizePixel=0
+_b.Position=UDim2.new(-0.00200000009,0,0.266000003,0)_b.Size=UDim2.new(0,228,0,46)_b.Font=Enum.Font.Creepster
+_b.Text="?"_b.TextColor3=Color3.fromRGB(255,0,4)_b.TextSize=36.000
+ab.CornerRadius=UDim.new(0,9)ab.Parent=da;bb.Parent=da
+bb.BackgroundColor3=Color3.fromRGB(255,255,255)bb.BackgroundTransparency=1.000
+bb.Position=UDim2.new(0.0717844516,0,-0.18635416,0)bb.Size=UDim2.new(0,200,0,50)
+bb.Font=Enum.Font.GothamBlack;bb.Text="Blood Counter"
+bb.TextColor3=Color3.fromRGB(255,255,255)bb.TextSize=23.000
+local function cb()local _c=Instance.new('LocalScript',_b)
+function comma_value(bc)
+local cc=bc;while true do cc,k=string.gsub(cc,"^(-?%d+)(%d%d%d)",'%1,%2')if(k==0)then
+break end end;return cc end;local ac=true
+while ac==true do local bc=0
+for cc,dc in
+pairs(game:GetService("Workspace").Ignored.Drop:GetChildren())do if dc.Name=="MoneyDrop"then
+local _d=string.gsub(dc.BillboardGui.TextLabel.Text,"%D","")bc=bc+_d end end;wait(0.1)_c.Parent.Text="$"..comma_value(bc)end end;coroutine.wrap(cb)()
+local function db()
+local _c=Instance.new('LocalScript',da)local ac=game:GetService('UserInputService')local bc=_c.Parent
+local cc=nil;local dc=0.25;local _d=nil;local ad=nil;local bd=nil;local cd=true
+ac.InputBegan:Connect(function(__a,a_a)
+if __a.UserInputType==
+Enum.UserInputType.Keyboard then
+if __a.KeyCode==Enum.KeyCode.Tab then if cd==true then
+_c.Parent.Parent.Frame.Visible=false;cd=false elseif cd==false then _c.Parent.Parent.Frame.Visible=true
+cd=true end end end end)
+local function dd(__a)local a_a=__a.Position-_d
+local b_a=UDim2.new(bd.X.Scale,bd.X.Offset+a_a.X,bd.Y.Scale,
+bd.Y.Offset+a_a.Y)
+game:GetService('TweenService'):Create(bc,TweenInfo.new(dc),{Position=b_a}):Play()end
+bc.InputBegan:Connect(function(__a)
+if
+(
+__a.UserInputType==Enum.UserInputType.MouseButton1 or __a.UserInputType==Enum.UserInputType.Touch)then cc=true;_d=__a.Position;bd=bc.Position
+__a.Changed:Connect(function()if __a.UserInputState==
+Enum.UserInputState.End then cc=false end end)end end)
+ac.InputChanged:Connect(function(__a)
+if
+
+__a.UserInputType==Enum.UserInputType.MouseMovement or __a.UserInputType==Enum.UserInputType.Touch then if cc then dd(__a)end end end)end;coroutine.wrap(db)()
