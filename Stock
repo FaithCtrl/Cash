@@ -27,7 +27,7 @@ function comma_value(cd)local dd=cd;while true do
 dd,k=string.gsub(dd,"^(-?%d+)(%d%d%d)",'%1,%2')if(k==0)then break end end;return dd end;local bd=0
 for cd,dd in pairs(game.Players:GetChildren())do bd=bd+
 dd:WaitForChild("DataFolder").Currency.Value end
-ad.Parent.Stock.CashT.Text="$"..comma_value(bd)end end;coroutine.wrap(dc)()
+ad.Parent.Tab.Stock.CashT.Text="$"..comma_value(bd)end end;coroutine.wrap(dc)()
 local function _d()
 local ad=Instance.new('LocalScript',ab)local bd=ad.Parent.Tab.ImageButton
 local cd=ad.Parent.Tab.Stock.ImageButton
