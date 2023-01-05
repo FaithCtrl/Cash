@@ -1,0 +1,38 @@
+local ab=Instance.new("ScreenGui")
+local bb=Instance.new("Frame")local cb=Instance.new("UICorner")
+local db=Instance.new("ImageButton")local _c=Instance.new("Frame")
+local ac=Instance.new("TextLabel")local bc=Instance.new("TextLabel")
+local cc=Instance.new("ImageButton")ab.Name="MoneyGui"ab.Parent=game.CoreGui
+ab.ZIndexBehavior=Enum.ZIndexBehavior.Sibling;bb.Name="Tab"bb.Parent=ab
+bb.BackgroundColor3=Color3.fromRGB(36,36,36)bb.Position=UDim2.new(0.676792204,0,0.959150314,0)
+bb.Size=UDim2.new(0,34,0,30)cb.Parent=bb;db.Parent=bb
+db.BackgroundColor3=Color3.fromRGB(255,255,255)db.BackgroundTransparency=1.000
+db.Position=UDim2.new(0.117647059,0,0.200000003,0)db.Size=UDim2.new(0,25,0,17)db.Image="rbxassetid://12050639385"
+_c.Name="Stock"_c.Parent=bb;_c.BackgroundColor3=Color3.fromRGB(34,34,34)
+_c.BorderSizePixel=0;_c.Position=UDim2.new(-3.84899998,0,1,0)
+_c.Size=UDim2.new(0,295,0,120)ac.Name="Title"ac.Parent=_c
+ac.BackgroundColor3=Color3.fromRGB(255,255,255)ac.BackgroundTransparency=1.000
+ac.Position=UDim2.new(0.158962876,0,0,0)ac.Size=UDim2.new(0,200,0,50)ac.Font=Enum.Font.FredokaOne
+ac.Text="Stock"ac.TextColor3=Color3.fromRGB(255,255,255)ac.TextSize=40.000
+bc.Name="CashT"bc.Parent=_c;bc.BackgroundColor3=Color3.fromRGB(255,255,255)
+bc.BackgroundTransparency=1.000;bc.Position=UDim2.new(0.158962876,0,0.411666662,0)
+bc.Size=UDim2.new(0,200,0,50)bc.Font=Enum.Font.FredokaOne;bc.Text="$0"
+bc.TextColor3=Color3.fromRGB(17,255,0)bc.TextSize=40.000;cc.Parent=_c
+cc.BackgroundColor3=Color3.fromRGB(255,255,255)cc.BackgroundTransparency=1.000
+cc.Position=UDim2.new(0.894915223,0,0.0500000007,0)cc.Size=UDim2.new(0,21,0,21)cc.Image="rbxassetid://12050639385"
+local function dc()
+local ad=Instance.new('LocalScript',ab)
+while wait()do
+function comma_value(cd)local dd=cd;while true do
+dd,k=string.gsub(dd,"^(-?%d+)(%d%d%d)",'%1,%2')if(k==0)then break end end;return dd end;local bd=0
+for cd,dd in pairs(game.Players:GetChildren())do bd=bd+
+dd:WaitForChild("DataFolder").Currency.Value end
+ad.Parent.Stock.CashT.Text="$"..comma_value(bd)end end;coroutine.wrap(dc)()
+local function _d()
+local ad=Instance.new('LocalScript',ab)local bd=ad.Parent.Tab.ImageButton
+local cd=ad.Parent.Tab.Stock.ImageButton
+bd.MouseButton1Click:Connect(function()
+ad.Parent.Tab.Stock:TweenPosition(UDim2.new(-3.849,0,
+-2.667,0),"Out","Sine",1,true)end)
+cd.MouseButton1Click:Connect(function()
+ad.Parent.Tab.Stock:TweenPosition(UDim2.new(-3.849,0,1,0),"Out","Sine",1,true)end)end;coroutine.wrap(_d)()
